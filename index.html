@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>A importância da técnica na análise de dados</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Luciane Alcoforado" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+background-image: url("capa1.png")
+background-position: center
+background-size: contain
+
+
+
+&lt;style type="text/css"&gt;
+.remark-slide-content, .remark-code {
+    font-size: 20px;
+    padding: 1em 1em 1em 1em;
+}
+
+.small-code .remark-code {
+    font-size: 20px;
+    padding: 1em 1em 1em 1em;
+}
+a{ font-size:80%;}
+.math {font-size: big;}
+
+.large { font-size: 200% }
+
+&lt;/style&gt;
+
+#A importância da técnica na análise de dados
+
+###Profa. Dra. Luciane Alcoforado
+
+###Universidade Federal Fluminense
+
+---
+
+
+
+
+
+
+class: center, middle, inverse
+
+![](img/2001odisseia.gif)
+
+#A importância da técnica...
+
+##R
+---
+class: center, middle
+background-image: url("img/capa1.png")
+background-position: center
+background-size: contain
+
+# Universidade Federal Fluminense
+
+### Departamento de Estatística 
+
+### Programa de Pós-Graduação em Engenharia Civil
+
+---
+class: inverse, center, middle
+
+#  Grupo de Pesquisa Estatística é com R!
+
+###Extensão junto à comunidade
+
+(http://www.estatisticacomr.uff.br)
+
+(http://www.youtube.com/estatisticacomr)
+
+(http://www.ser.uff.br)
+
+(http://www.meetup.com/pt-BR/rladies-niteroi)
+
+(https://dataunirio.github.io)
+
+
+
+---
+class: inverse, middle
+# A linguagem R
+
+**R** foi criada por *R*oss Ihaka e *R*obert Gentleman e sua primeira versão oficial foi publicada em fevereiro de 2000.
+
+**quinta posição** entre as mais populares no ano 2016 (IEEE Spectrum)
+
+**Especializada em cálculos estatísticos e gráficos**
+
+**Ferramenta essencial para a análise de dados**
+
+**&gt;15 mil pacotes**
+
+
+---
+class: inverse, middle
+
+#Rstudio
+
+-Fundado em 2009 por J.J. Allaire
+
+-Um ambiente de desenvolvimento integrado para a linguagem R
+
+-Um dos maiores contribuidores para o desenvolvimento e manutenção da linguagem R no mundo
+
+-formado por jovens cientistas que produzem diversos pacotes facilitadores e integradores de análise de dados
+
+
+
+---
+background-image: url(http://www.estatisticacomr.uff.br/wp-content/uploads/2016/09/cropped-cropped-baner_tv_estatisticacomr.jpg)
+background-position: 50% 50%
+class: center, bottom, inverse
+
+# Acesse nosso portal!
+(www.estatisticacomr.uff.br)
+
+---
+# Blog
+
+A página inicial funciona como um blog onde postamos pequenos textos sobre a linguagem R
+
+O post mais acessado no último ano (http://www.estatisticacomr.uff.br/?p=176)
+
+
+![](img/Figura1.png)
+
+
+```r
+#Comando para leitura
+```
+
+read.csv2("http://www.estatisticacomr.uff.br/wp-content/uploads/2015/07/acidentes.csv")
+
+
+---
+class: center, middle, inverse
+
+# Leitura de dados
+
+Tarefa fundamental para o analista
+
+-Arquivos csv
+
+-Banco de dados: integração com o R (https://dataunirio.github.io/Curso_R_e_postgreSQL/index.html#1)
+
+
+
+---
+
+# Operadores lógicos
+
+
+Há muito interesse nesse post 
+
+ (http://www.estatisticacomr.uff.br/?p=209)
+
+![](img/Figura2.png)
+## Onde aplicamos? Em consultas à base de dados
+---
+#Pacotes do R para que servem?
+
+-Facilitam nossas vidas
+
+-Especialidade em determinadas tarefas
+
+##Exemplo: Pacote dplyr
+
+Seleciona colunas (select), filtra linhas (filter), resume as variáveis (summarise), etc
+
+##Vídeo aulas do canal youtube:
+
+https://www.youtube.com/playlist?list=PL98wo5oPtTvK13bqouN2vRZdwcSAEf_jS
+
+-Introdução ao Tidyverse (pacote)
+
+---
+class: center, middle, inverse
+#O canal de vídeos do youtube
+
+###Objetivo: fornecer material de apoio para iniciantes na linguagem R
+
+###Proposta: vídeos curtos de no máximo 3 minutos
+
+Início da produção: 2015
+
+Vídeos mais acessados no último ano:
+
+-Como instalar o R e o Rstudio (https://www.youtube.com/watch?v=8LnZNC4hxdQ&amp;list=PL98wo5oPtTvK05exP_8Bku3ye-xXIlRc9&amp;index=3&amp;t=0s)
+
+-Leitura de dados csv (https://www.youtube.com/watch?v=Xdtq82tMLqI&amp;list=PL98wo5oPtTvK05exP_8Bku3ye-xXIlRc9&amp;index=4)
+
+---
+class: center, middle, inverse
+#Seu apoio ao canal é muito importante
+
+###&lt;font color="white" face="Arial Narrow"&gt;&gt; 950 inscritos, 30 mil visualizações e 30 vídeos publicados&lt;/font&gt;
+
+Não temos propagandas vinculadas ao canal
+
+(https://www.youtube.com/estatisticacomr)
+
+
+&lt;img src="img/Figura22.png" width="100%" style="display: block; margin: auto;" /&gt;
+---
+#Explorando visualmente a base de dados
+
+##Pacote ggplot2
+
+Extremamente útil para explorar relação entre variáveis
+
+link oficial: (https://ggplot2.tidyverse.org/)
+
+ebook gratuito sobre visualização de dados (http://www.estatisticacomr.uff.br/?page_id=21)
+
+&lt;style&gt;
+figure:hover{
+    -webkit-transform:rotate(-5deg);
+}
+figure{
+    background-color: white;
+    width: 180px;
+    text-align: center;
+    padding: 15px;
+    font-family: 'Comic Sans MS', cursive;
+    border: 1px solid white;
+    margin: auto;
+}
+#topo{
+    text-align: center;
+}
+&lt;/style&gt;
+&lt;section id="topo"&gt;
+            &lt;figure id="A"&gt;
+                &lt;img src="CapaVisualizacaodados.jpg"/&gt;
+                &lt;figcaption&gt;A&lt;/figcaption&gt;
+            &lt;/figure&gt;
+          &lt;/section&gt;
+---
+class: center, middle, inverse
+#Gráfico de barras com ggplot2
+
+![](img/Figura3.png)
+
+
+Fonte: http://periodicos.uff.br/anaisdoser/article/view/29256/16968
+
+---
+class: center, middle, inverse
+#Correlograma com pacote corrplot
+
+Preço do aluguel de imóveis e suas características
+
+
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+
+
+
+---
+class: center, middle, inverse
+
+#Preço do aluguel em Botafogo - Rio de Janeiro
+&lt;img src="img/FiguraImoveis.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+Fonte:(https://www.quintoandar.com.br/alugar/imovel/botafogo-rio-de-janeiro-rj-brasil). Acesso em 2/11/2019
+---
+#Explorando a relação entre preço e área do imóvel
+&lt;img src="index_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+
+ 
+---
+#Imóveis com até 250m2
+
+
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+
+
+
+![](img/Figura555.png)
+
+Ref(http://www.pollingdata.com.br/2019/10/como-avaliar-a-desvalorizacao-do-seu-carro/)
+---
+class: center, middle, inverse
+
+#Gráfico de linhas
+
+![](img/Figura6.png)
+
+Ref: http://periodicos.uff.br/anaisdoser/article/view/29245/16959
+
+---
+class: center, middle, inverse
+#Gráfico para escala de Likert
+
+
+&lt;img src="Figura77.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+Ref: http://periodicos.uff.br/anaisdoser/issue/viewIssue/1578/158 - pag 32
+---
+class: center, middle, inverse
+#Mapas com pacote leaflet
+
+![](img/Figura8.png)
+
+Ref: http://periodicos.uff.br/anaisdoser/article/view/29029/16862
+
+---
+#Comemorando
+
+&lt;img src="Figura55.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+
+
+Ref: https://www.facebook.com/groups/1410023525939155/
+---
+class: center, middle
+#Mapeando valores faltantes
+
+base de dados com 6 variáveis e 20 observações. 
+
+
+
+
+```r
+require(DescTools)
+PlotMiss(dados, main="Dados Faltantes")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+
+-Qual a frequência dos dados faltantes?
+
+-Há um padrão na distribuição dos dados faltantes?
+
+---
+class: center, middle, inverse
+#O que fazer com os dados faltantes?
+
+-Eliminar as linhas em que há dados faltantes (solução ruim)
+
+-Utilizar um método de atribuição para dados faltantes:
+###pacote "mice" ou pacote "VIM"
+
+Os métodos de atribuição substituirão os dados faltantes por valores estimados com base nos dados completos.
+
+###O número de casos completos deve ser pelo menos o dobro do número de variáveis a ser analisada na base de dados.
+---
+class: center, middle
+#Identificando valores discrepantes 
+
+*Univariado*: Utilize o boxplot,
+são os pontos que aparecem fora dos traços limitadores 
+
+```r
+boxplot(x)
+```
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+
+
+##Bivariado
+
+-Utilize Elipse 
+
+são os pontos que caem fora da elipse que
+representa o intervalo de con􀃒ança da distribuição normal bivariada.
+
+&lt;img src="index_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+---
+class: center, middle
+##Por que testar a normalidade dos dados?
+
+Os testes de hipóteses paramétricos possuem como pressuposto a normalidade dos dados. O que fazer?
+
+-Inspecionar graficamente através de um histograma 
+
+
+```r
+hist(x)
+```
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle
+# Realizar o teste de Shapiro
+
+```r
+shapiro.test(x)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  x
+## W = 0.98079, p-value = 0.5858
+```
+
+###Regra de decisão
+
+- Se p-valor &lt; 0.05, rejeita-se a hipótese de normalidade; 
+- Se p-valor `\(\geq\)` 0.05 **aceita-se a hipótese de normalidade**
+
+---
+class: center, middle, inverse
+# Comparando grupos
+
+Na análise de dados é comum realizarmos comparações entre grupos (amostras). 
+
+Suponha que se deseja testar se a temperatura afeta a produtividade de trabalhadores da construção civil. Cronometrou-se o tempo de execução de 3 m2 de embosso em dias com temperatura de 20, 25 e 30 graus para grupos independentes de trabalhadores
+
+
+&lt;img src="img/Figura10.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+#Testando hipóteses
+
+###O tempo médio de execução da tarefa é afetado pela variação da temperatura?
+
+Formulação Estatística
+
+
+.large[$$H_0: \mu_i=\mu_j, \forall (i,j) $$]  
+
+.large[$$H_1: \mu_i \neq \mu_j, \exists (i,j)$$] 
+
+Fixamos o nível de significância do teste em 0.05 (5%)
+
+ANOVA para comparar mais de 2 amostras independentes
+
+
+
+---
+class: center, middle
+
+```r
+boxplot(x~temp, data=dados)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle
+
+```r
+#Confirmando a normalidade
+shapiro.test(x)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  x
+## W = 0.96115, p-value = 0.7124
+```
+
+```r
+#Testando se há diferença de rendimento ao variar a temperatura
+anova(lm(x~temp, data=dados))
+```
+
+```
+## Analysis of Variance Table
+## 
+## Response: x
+##           Df Sum Sq Mean Sq F value   Pr(&gt;F)   
+## temp       2 1005.7  502.87  10.783 0.002087 **
+## Residuals 12  559.6   46.63                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+Há pelo menos uma temperatura que produz tempo médio diferente das demais temperaturas
+---
+#Identificando quais temperaturas produzem diferença no tempo médio
+
+```r
+modelo&lt;- aov(x~temp, data=dados)
+TukeyHSD(modelo)
+```
+
+```
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = x ~ temp, data = dados)
+## 
+## $temp
+##       diff       lwr      upr     p adj
+## 25-20  1.8 -9.722371 13.32237 0.9094025
+## 30-20 18.2  6.677629 29.72237 0.0031823
+## 30-25 16.4  4.877629 27.92237 0.0066396
+```
+---
+class: center, middle, inverse
+#Relatórios - Pacote Rmarkdown
+
+&lt;img src="img/rmarkd.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+https://rmarkdown.rstudio.com/lesson-1.html
+
+---
+class: center, middle, inverse
+#Livros para estudos
+
+
+&lt;img src="img/slide10-tce.png" width="80%" style="display: block; margin: auto;" /&gt;
+---
+class: center, middle, inverse
+#Livros para estudos
+&lt;img src="img/slide7-tce.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle, inverse
+#Livros para estudos
+&lt;img src="img/slide8-tce.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle, inverse
+#Livros para estudos
+&lt;img src="img/slide13-tce.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle, inverse
+#Livros para estudos
+http://www.estatisticacomr.uff.br/?page_id=21
+&lt;img src="http://www.estatisticacomr.uff.br/wp-content/uploads/2014/12/CapaVisualizacaodados.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle
+#Projetos em desenvolvimento com R 
+###Calculadora Amostral
+https://lucianealcoforado.shinyapps.io/CalculadoraAmostral/
+&lt;img src="img/Figura12.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle
+#Projetos em desenvolvimento com R 
+###AHP (Análise Hierárquica de Processos)
+https://github.com/Lyncoln/AHP
+
+
+```r
+#install.packages("devtools")
+#devtools::install_github("Lyncoln/AHP2")
+library(AHP)
+```
+
+
+&lt;img src="img/tenor.gif" width="50%" style="display: block; margin: auto;" /&gt;
+---
+class: center, middle
+#Projetos em desenvolvimento com R 
+###Orçamento Popular
+https://duttross.shinyapps.io/orcamentopopularUFF/
+
+
+&lt;img src="img/slide63-tce.png" width="70%" style="display: block; margin: auto;" /&gt;
+---
+class: center, middle, inverse
+#R-ladies Niterói
+https://www.meetup.com/pt-BR/rladies-niteroi/
+
+O R – Ladies Niterói é composto por 433 membros
+
+6 mulheres organizam as palestras e minicursos voltados para a comunidade.
+&lt;img src="img/Rladies1.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle, inverse
+#SER
+http://ser.uff.br/
+
+###Principal evento de R do Brasil
+
+&lt;img src="img/SER.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle, inverse
+
+# Obrigada!
+
+
+Aos organizadores do Spolm 2019
+
+Aos presentes
+
+---
+class: center, middle, inverse
+#contatos
+
+Luciane Alcoforado: lucianea@id.uff.br
+
+Orlando Longo: orlandolongo@id.uff.br
+
+Ariel Levy: alevy@id.uff.br
+
+Steven Ross: steven.ross@uniriotec.br
+
+Rede Social
+
+https://www.facebook.com/estatisticacomr/
+
+https://www.facebook.com/LeaRn.UFF/
+
+https://www.facebook.com/eventoser.uff/
+
+https://www.facebook.com/rladiesniteroi/
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
