@@ -125,12 +125,18 @@ class: inverse, middle
 
 
 ---
-background-image: url(http://www.estatisticacomr.uff.br/wp-content/uploads/2016/09/cropped-cropped-baner_tv_estatisticacomr.jpg)
+background-image: url(img/estatisticacomr-site.png)
+background-position: 50% 50%
+background-size: contain
+class: right, upper, inverse
+
+```{r eval=FALSE, include=FALSE}
 background-position: 50% 50%
 class: center, bottom, inverse
+```
 
-# Acesse nosso portal!
-(www.estatisticacomr.uff.br)
+
+#http://www.estatisticacomr.uff.br
 
 ---
 # Blog
@@ -262,6 +268,61 @@ Fonte: http://periodicos.uff.br/anaisdoser/article/view/29256/16968
 
 ---
 class: center, middle, inverse
+
+#Gráfico de linhas
+
+![](img/Figura6.png)
+
+Ref: http://periodicos.uff.br/anaisdoser/article/view/29245/16959
+
+---
+class: center, middle, inverse
+#Gráfico para escala de Likert
+
+
+```{r echo=FALSE, out.width="80%"}
+knitr::include_graphics("img/Figura77.png")
+```
+
+Ref: http://periodicos.uff.br/anaisdoser/issue/viewIssue/1578/158 - pag 32
+---
+class: center, middle, inverse
+#Mapas com pacote leaflet
+
+![](img/Figura8.png)
+
+Ref: http://periodicos.uff.br/anaisdoser/article/view/29029/16862
+
+---
+#Visualização em Painel
+https://luizfcp.shinyapps.io/twittadas_presidenciais/
+
+```{r echo=FALSE, fig.height=8, fig.width=10}
+knitr::include_graphics("img/slidetwitadas-tce.png")
+```
+---
+#Comemorando
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("img/Figura55.png")
+```
+
+
+
+Ref: https://www.facebook.com/groups/1410023525939155/
+
+---
+class: center, middle, inverse
+#Preço do aluguel em Botafogo - Rio de Janeiro
+```{r echo=FALSE, out.width="80%"}
+knitr::include_graphics("img/FiguraImoveis.png")
+```
+
+(https://www.quintoandar.com.br/alugar/imovel/botafogo-rio-de-janeiro-rj-brasil). Acesso em 2/11/2019
+
+
+---
+class: center, middle, inverse
 #Correlograma com pacote corrplot
 
 Preço do aluguel de imóveis e suas características
@@ -286,15 +347,8 @@ knitr::include_graphics("img/Figura4.png")
 ```
 
 
----
-class: center, middle, inverse
 
-#Preço do aluguel em Botafogo - Rio de Janeiro
-```{r echo=FALSE, out.width="80%"}
-knitr::include_graphics("img/FiguraImoveis.png")
-```
 
-Fonte:(https://www.quintoandar.com.br/alugar/imovel/botafogo-rio-de-janeiro-rj-brasil). Acesso em 2/11/2019
 ---
 #Explorando a relação entre preço e área do imóvel
 ```{r echo=FALSE, fig.height=6, fig.width=10}
@@ -329,7 +383,7 @@ ggplot(dados, aes(x=area, y=preco) ) +
 ```{r echo=FALSE, fig.height=7, fig.width=10}
 
 require(dplyr)
-dados1=dados %>% filter(area<=250)
+dados1=dados %>% filter(area<=250) %>% select(-data)
 model = lm(preco~area, dados1)
 n=length(dados1$preco)
 
@@ -355,40 +409,45 @@ Ref(http://www.pollingdata.com.br/2019/10/como-avaliar-a-desvalorizacao-do-seu-c
 ---
 class: center, middle, inverse
 
-#Gráfico de linhas
+##Árvore de decisão (Classification and Regression Trees) - pacote rpart
+Preço do aluguel ~ Área do imóvel
+```{r echo=FALSE, fig.height=6.5, fig.width=10}
+library(rpart) ## recursive partitioning
+m <- rpart(preco ~area , data = dados1,
+           method = "anova")
+library(rpart.plot)
+rpart.plot(m, yesno = 2,
+type = 0, extra = 100)
 
-![](img/Figura6.png)
-
-Ref: http://periodicos.uff.br/anaisdoser/article/view/29245/16959
-
----
-class: center, middle, inverse
-#Gráfico para escala de Likert
-
-
-```{r echo=FALSE, out.width="80%"}
-knitr::include_graphics("Figura77.png")
 ```
 
-Ref: http://periodicos.uff.br/anaisdoser/issue/viewIssue/1578/158 - pag 32
 ---
-class: center, middle, inverse
-#Mapas com pacote leaflet
+#Random Forest
 
-![](img/Figura8.png)
+múltiplas árvores ao invés de uma única árvore como no modelo CART (Classification and Regression Trees)
 
-Ref: http://periodicos.uff.br/anaisdoser/article/view/29029/16862
+```{r}
+require(randomForest)
+m2 <- randomForest(preco~area, ntree=100, data=dados1)
+m2
+
+```
 
 ---
-#Comemorando
+#Predição dos modelos
 
-```{r echo=FALSE, out.width="50%"}
-knitr::include_graphics("Figura55.png")
+Área de 80 e 100 m2
+
+
+```{r echo=FALSE, fig.height=6, fig.width=10}
+
+new= data.frame(area=c(80,100))
+predict(model, newdata = new) 
+predict(m, newdata = new)
+predict(m2, newdata = new) 
 ```
 
 
-
-Ref: https://www.facebook.com/groups/1410023525939155/
 ---
 class: center, middle
 #Mapeando valores faltantes
@@ -494,7 +553,7 @@ class: center, middle, inverse
 
 Na análise de dados é comum realizarmos comparações entre grupos (amostras). 
 
-Suponha que se deseja testar se a temperatura afeta a produtividade de trabalhadores da construção civil. Cronometrou-se o tempo de execução de 3 m2 de embosso em dias com temperatura de 20, 25 e 30 graus para grupos independentes de trabalhadores
+Banco de Dados com **tempo de execução (min)** de 3 m2 de embosso em dias com **temperatura de 20, 25 e 30** graus Celsius para grupos independentes de trabalhadores
 
 
 ```{r echo=FALSE, out.width="100%"}
@@ -602,7 +661,21 @@ http://www.estatisticacomr.uff.br/?page_id=21
 ```{r echo=FALSE, out.width="50%"}
 knitr::include_graphics("http://www.estatisticacomr.uff.br/wp-content/uploads/2014/12/CapaVisualizacaodados.jpg")
 ```
+---
+class: center, middle, inverse
+#Livros para estudos
+https://www.tidytextmining.com/
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("img/JuliaSilge.png")
+```
 
+---
+class: center, middle, inverse
+#Livros para estudos
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("img/deep.png")
+```
 ---
 class: center, middle
 #Projetos em desenvolvimento com R 

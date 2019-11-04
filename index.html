@@ -117,12 +117,15 @@ class: inverse, middle
 
 
 ---
-background-image: url(http://www.estatisticacomr.uff.br/wp-content/uploads/2016/09/cropped-cropped-baner_tv_estatisticacomr.jpg)
+background-image: url(img/estatisticacomr-site.png)
 background-position: 50% 50%
-class: center, bottom, inverse
+background-size: contain
+class: right, upper, inverse
 
-# Acesse nosso portal!
-(www.estatisticacomr.uff.br)
+
+
+
+#http://www.estatisticacomr.uff.br
 
 ---
 # Blog
@@ -253,45 +256,6 @@ Fonte: http://periodicos.uff.br/anaisdoser/article/view/29256/16968
 
 ---
 class: center, middle, inverse
-#Correlograma com pacote corrplot
-
-Preço do aluguel de imóveis e suas características
-
-
-
-
-&lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
-
-
-
-
----
-class: center, middle, inverse
-
-#Preço do aluguel em Botafogo - Rio de Janeiro
-&lt;img src="img/FiguraImoveis.png" width="80%" style="display: block; margin: auto;" /&gt;
-
-Fonte:(https://www.quintoandar.com.br/alugar/imovel/botafogo-rio-de-janeiro-rj-brasil). Acesso em 2/11/2019
----
-#Explorando a relação entre preço e área do imóvel
-&lt;img src="index_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
-
- 
----
-#Imóveis com até 250m2
-
-
-
-
-&lt;img src="index_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
-
-
-
-![](img/Figura555.png)
-
-Ref(http://www.pollingdata.com.br/2019/10/como-avaliar-a-desvalorizacao-do-seu-carro/)
----
-class: center, middle, inverse
 
 #Gráfico de linhas
 
@@ -304,7 +268,7 @@ class: center, middle, inverse
 #Gráfico para escala de Likert
 
 
-&lt;img src="Figura77.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/Figura77.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 Ref: http://periodicos.uff.br/anaisdoser/issue/viewIssue/1578/158 - pag 32
 ---
@@ -316,6 +280,11 @@ class: center, middle, inverse
 Ref: http://periodicos.uff.br/anaisdoser/article/view/29029/16862
 
 ---
+#Visualização em Painel
+https://luizfcp.shinyapps.io/twittadas_presidenciais/
+
+&lt;img src="img/slidetwitadas-tce.png" width="1280" style="display: block; margin: auto;" /&gt;
+---
 #Comemorando
 
 &lt;img src="img/Figura55.png" width="50%" style="display: block; margin: auto;" /&gt;
@@ -323,6 +292,103 @@ Ref: http://periodicos.uff.br/anaisdoser/article/view/29029/16862
 
 
 Ref: https://www.facebook.com/groups/1410023525939155/
+
+---
+class: center, middle, inverse
+#Preço do aluguel em Botafogo - Rio de Janeiro
+&lt;img src="img/FiguraImoveis.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+(https://www.quintoandar.com.br/alugar/imovel/botafogo-rio-de-janeiro-rj-brasil). Acesso em 2/11/2019
+
+
+---
+class: center, middle, inverse
+#Correlograma com pacote corrplot
+
+Preço do aluguel de imóveis e suas características
+
+
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+
+
+
+
+
+
+---
+#Explorando a relação entre preço e área do imóvel
+&lt;img src="index_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+
+ 
+---
+#Imóveis com até 250m2
+
+
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+
+
+![](img/Figura555.png)
+
+Ref(http://www.pollingdata.com.br/2019/10/como-avaliar-a-desvalorizacao-do-seu-carro/)
+---
+class: center, middle, inverse
+
+##Árvore de decisão (Classification and Regression Trees) - pacote rpart
+Preço do aluguel ~ Área do imóvel
+&lt;img src="index_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+#Random Forest
+
+múltiplas árvores ao invés de uma única árvore como no modelo CART (Classification and Regression Trees)
+
+
+```r
+require(randomForest)
+m2 &lt;- randomForest(preco~area, ntree=100, data=dados1)
+m2
+```
+
+```
+## 
+## Call:
+##  randomForest(formula = preco ~ area, data = dados1, ntree = 100) 
+##                Type of random forest: regression
+##                      Number of trees: 100
+## No. of variables tried at each split: 1
+## 
+##           Mean of squared residuals: 1225897
+##                     % Var explained: 64.85
+```
+
+---
+#Predição dos modelos
+
+Área de 80 e 100 m2
+
+
+
+```
+##        1        2 
+## 4242.304 5017.928
+```
+
+```
+##        1        2 
+## 3879.733 5363.077
+```
+
+```
+##        1        2 
+## 3559.979 6605.817
+```
+
+
 ---
 class: center, middle
 #Mapeando valores faltantes
@@ -337,7 +403,7 @@ require(DescTools)
 PlotMiss(dados, main="Dados Faltantes")
 ```
 
-&lt;img src="index_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
 
 
 -Qual a frequência dos dados faltantes?
@@ -368,7 +434,7 @@ boxplot(x)
 ```
 
 
-&lt;img src="index_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ##Bivariado
@@ -378,7 +444,7 @@ boxplot(x)
 são os pontos que caem fora da elipse que
 representa o intervalo de con􀃒ança da distribuição normal bivariada.
 
-&lt;img src="index_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
 ---
 class: center, middle
 ##Por que testar a normalidade dos dados?
@@ -393,7 +459,7 @@ hist(x)
 ```
 
 
-&lt;img src="index_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle
@@ -422,7 +488,7 @@ class: center, middle, inverse
 
 Na análise de dados é comum realizarmos comparações entre grupos (amostras). 
 
-Suponha que se deseja testar se a temperatura afeta a produtividade de trabalhadores da construção civil. Cronometrou-se o tempo de execução de 3 m2 de embosso em dias com temperatura de 20, 25 e 30 graus para grupos independentes de trabalhadores
+Banco de Dados com **tempo de execução (min)** de 3 m2 de embosso em dias com **temperatura de 20, 25 e 30** graus Celsius para grupos independentes de trabalhadores
 
 
 &lt;img src="img/Figura10.png" width="100%" style="display: block; margin: auto;" /&gt;
@@ -452,7 +518,7 @@ class: center, middle
 boxplot(x~temp, data=dados)
 ```
 
-&lt;img src="index_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle
@@ -542,7 +608,17 @@ class: center, middle, inverse
 #Livros para estudos
 http://www.estatisticacomr.uff.br/?page_id=21
 &lt;img src="http://www.estatisticacomr.uff.br/wp-content/uploads/2014/12/CapaVisualizacaodados.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+---
+class: center, middle, inverse
+#Livros para estudos
+https://www.tidytextmining.com/
+&lt;img src="img/JuliaSilge.png" width="50%" style="display: block; margin: auto;" /&gt;
 
+---
+class: center, middle, inverse
+#Livros para estudos
+
+&lt;img src="img/deep.png" width="50%" style="display: block; margin: auto;" /&gt;
 ---
 class: center, middle
 #Projetos em desenvolvimento com R 
